@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>Carolin's Synesthesia Tool</title>
+  </head>
+  <body style="background-image: url('back.jpg');background-size: cover;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-1" style="text-align: center;">Carolin's Synesthesia Tool</h1>
+          <hr style="background-color: #98d261; border: 0 none; color: #98d261; height: 5px;">
+        </div>
+        <div class="col-6">
+          <textarea id="input" class="form-control" rows="10" style="width: 100%;resize: none;"></textarea>
+          <br>
+          <button class="btn btn-success" id="convert" style="width: 100%;font-size: 30px;">Synesthesize</button>
+        </div>
+        <div class="col-6">
+          <div id="outPut" class="form-control" style="font-size: 25px;background-color: #fff; height: 255px;padding: 10px;"></div>
+        </div>
+        <div class="col-12">
+          <hr style="background-color: #98d261; border: 0 none; color: #98d261; height: 5px;">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+    <!-- Important JavaScript -->
+    <script>
+      $(document).ready(function () {
+
+        colors = {"a" : "#283022", "b" : "#3f1e11", "c" : "#ccc9c7", "d" : "#5b5958", "e" : "#2d2d2d", "f" : "#422121", "g" : "#471c1c", "h" : "#ddddd9", "i" : "#f4f4f2", "j" : "#fcd93f", "k" : "#3e164c", "l" : "#f9cc27", "m" : "#f95c27", "n" : "#c41b1b", "o" : "#afaeae", "p" : "#666464", "q" : "#e5e3e3", "r" : "#c40707", "s" : "#d6d4d4", "t" : "#5b5845", "u" : "#9d96aa", "v" : "#9e9d93", "w" : "#4d4c4f", "x" : "#202021", "y" : "#9e8f21", "z" : "#7a6c02", "0" : "#000", "1" : "#000", "2" : "#000", "3" : "#000", "4" : "#000", "5" : "#000", "6" : "#000", "7" : "#000", "8" : "#000", "9" : "#000"}
+
+        $("#convert").click(function () {
+          $("#outPut").text("");
+          var input = $("#input").val().toString();
+          for (var i = 0; i < input.length; i++) {
+            var finalNum = input.charAt(i)
+            try {
+              var gotHex = colors[finalNum.toLowerCase()]
+            } catch(err) {
+              var gotHex = "#fff";
+            }
+
+            if (finalNum != " ") {
+              $("#outPut").append("<p style='display: inline-block; color: " + gotHex + ";'>" + input.charAt(i) + "</p>");
+            } else {
+              $("#outPut").append("<p style='display: inline-block; margin: 5px; color: " + gotHex + ";'>" + input.charAt(i) + "</p>");
+            }
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
